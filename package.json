@@ -1,0 +1,41 @@
+{
+  "name": "shivamportfolio",
+  "private": true,
+  "description": "Shivam Portfolio",
+  "dependencies": {
+    "gatsby": "^5.13.1",
+    "gatsby-plugin-image": "^3.13.0",
+    "gatsby-plugin-manifest": "^5.13.0",
+    "gatsby-plugin-sharp": "^5.13.0",
+    "gatsby-source-filesystem": "^5.13.0",
+    "gatsby-transformer-sharp": "^5.13.0",
+    "gsap": "^3.12.5",
+    "jquery": "^3.7.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/plugin-syntax-jsx": "^7.23.3",
+    "@babel/preset-env": "^7.23.8",
+    "@babel/preset-react": "^7.23.3",
+    "@types/gsap": "^3.0.0",
+    "babel-plugin-lodash": "^3.3.4",
+    "devcert": "^1.2.2",
+    "prettier": "^3.2.4",
+    "uri-js": "^4.4.1"
+  },
+  "keywords": [
+    "Shivam Portfolio"
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  }
+}
