@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from "react"
 import $ from "jquery"
+import * as styles from "@styles/global.module.css"
 
 const ParticleNetworkAnimation = () => {
   const canvasRef = useRef(null)
 
   useEffect(() => {
     class Particle {
-      constructor(parent, x, y) {
+      constructor(parent, x, y) { 
         this.network = parent
         this.canvas = parent.canvas
         this.ctx = parent.ctx
@@ -55,9 +56,9 @@ const ParticleNetworkAnimation = () => {
         this.options = {
           velocity: 1,
           density: 15000,
-          netLineDistance: 200,
-          netLineColor: "#ffffff80",
-          particleColors: ["#ffffff80"],
+          netLineDistance:  400,
+          netLineColor: "#ffffff33",
+          particleColors: ["#ffffff33"],
         }
         this.canvas = parent.canvas
         this.ctx = parent.ctx
@@ -72,25 +73,29 @@ const ParticleNetworkAnimation = () => {
       }
 
       createParticles(isInitial) {
-        const me = this
-        this.particles = []
-        const quantity =
-          (this.canvas.width * this.canvas.height) / this.options.density
-
+        this.particles = [];
+        let maxQuantity = (this.canvas.width * this.canvas.height) / this.options.density;
         if (isInitial) {
-          let counter = 0
-          clearInterval(this.createIntervalId)
-          this.createIntervalId = setInterval(function () {
-            if (counter < quantity - 1) {
-              me.particles.push(new Particle(me))
-            } else {
-              clearInterval(me.createIntervalId)
-            }
-            counter++
-          }, 250)
-        } else {
+          let quantity = 50;
           for (let i = 0; i < quantity; i++) {
-            this.particles.push(new Particle(this))
+            const x = this.canvas.width * (0.1 + 0.8 * (i / (quantity - 1)));
+            const y = this.canvas.height * (0.1 + 0.8 * (i / (quantity - 1)));
+            this.particles.push(new Particle(this, x, y));
+          }
+          let growInterval = setInterval(() => {
+            if (this.particles.length < maxQuantity) {
+              for (let j = 0; j < 2 && this.particles.length < maxQuantity; j++) {
+                const x = Math.random() * this.canvas.width;
+                const y = Math.random() * this.canvas.height;
+                this.particles.push(new Particle(this, x, y));
+              }
+            } else {
+              clearInterval(growInterval);
+            }
+          }, 200);
+        } else {
+          for (let i = 0; i < maxQuantity; i++) {
+            this.particles.push(new Particle(this));
           }
         }
       }
@@ -308,18 +313,25 @@ const ParticleNetworkAnimation = () => {
       return array[Math.floor(Math.random() * array.length)]
     }
 
-    const pna = new ParticleNetworkAnimation()
-    pna.init($(".particle-network-animation")[0])
+    const pna = new ParticleNetworkAnimation();
+    if (canvasRef.current) {
+      pna.init(canvasRef.current);
+      setTimeout(() => {
+        if (pna.particleNetwork && pna.particleNetwork.options) {
+          pna.particleNetwork.options.velocity = pna.particleNetwork.options.velocity / 2;
+        }
+      }, 10000);
+    }
 
     return () => {
       pna.unbindUiActions()
     }
   }, [])
   return (
-    <div className="particle-network-animation" ref={canvasRef}>
-      <div className="glow glow-1"></div>
-      <div className="glow glow-2"></div>
-      <div className="glow glow-3"></div>
+    <div ref={canvasRef} className={styles.particleNetworkAnimation}>
+      <div className={styles.glow + " " + styles.glow1}></div>
+      <div className={styles.glow + " " + styles.glow2}></div>
+      <div className={styles.glow + " " + styles.glow3}></div>
     </div>
   )
 }

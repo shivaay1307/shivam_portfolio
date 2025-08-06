@@ -1,8 +1,9 @@
 import React from 'react';
 
 export const splitChars = (text) => {
-  return text.split('').map((char) => (
+  return text.split('').map((char, index) => (
     <div
+      key={index}
       className="char"
       style={{
         position: 'relative',

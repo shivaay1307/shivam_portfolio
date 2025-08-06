@@ -1,6 +1,6 @@
 import { useRef, useState, useLayoutEffect, createElement } from 'react';
-import { splitLines } from './utils/splitLines';
-import { splitString } from './utils/splitString';
+import { splitLines } from '@animations/utils/splitLines';
+import { splitString } from '@animations/utils/splitString';
 
 export const SplitLine = ({
   as = 'span',
@@ -17,7 +17,6 @@ export const SplitLine = ({
   }, [children]);
 
   if (typeof children !== 'string') {
-    console.warn('SplitLine: children must be a string.', children);
     return createElement(as, null, children);
   }
 

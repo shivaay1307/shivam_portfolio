@@ -1,7 +1,11 @@
 import React from 'react';
-import { splitChars } from './splitChars';
+import { splitChars } from '@animations/utils/splitChars';
 
 export const splitString = (string, by = 'WORD') => {
+  if (typeof string !== 'string') {
+    return string;
+  }
+
   const words = string.split(/\s+/);
   const wrappedWords = words.map((word, index) => {
     if (word === '') return ' ';
@@ -13,19 +17,19 @@ export const splitString = (string, by = 'WORD') => {
     }
 
     return (
-      <>
+      <React.Fragment key={index}>
         {index !== 0 ? ' ' : null}
-        <div
-          className="word"
+        <span
+          className={by === 'CHAR' ? 'char' : 'word'}
           style={{
             position: 'relative',
-            display: 'inline-block',
+            display: 'inline',
             whiteSpace: 'break-spaces',
           }}
         >
           {by === 'CHAR' ? wrappedChars : word}
-        </div>
-      </>
+        </span>
+      </React.Fragment>
     );
   });
 

@@ -1,15 +1,9 @@
-import * as React from "react"
-import Frontpage from "../components/frontpage"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import "./index.css"
+import * as React from 'react';
+import Layout from '@components/layout';
+import Seo from '@components/seo';
 
-const IndexPage = () => (
-  <Layout>
-      <Frontpage />
-  </Layout>
-)
+const IndexPage = () => <Layout />;
 
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo title="Home" />;
 
-export default IndexPage
+export default IndexPage;

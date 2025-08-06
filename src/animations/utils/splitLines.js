@@ -20,7 +20,6 @@ export const splitLines = (element) => {
   for (const line of lines) {
     wrappedLines.push(
       <div
-        className="line"
         style={{
           position: 'relative',
           display: 'inline-block',
