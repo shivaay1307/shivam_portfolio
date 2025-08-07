@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkshivamportfolio=self.webpackChunkshivamportfolio||[]).push([[293],{9639:function(e,t,n){n.r(t),n.d(t,{Head:function(){return i}});var r=n(6540),u=n(2329),o=n(2269),i=function(){return r.createElement(o.A,{title:"Home"})};t.default=function(){return r.createElement(u.A,null)}}}]);
+//# sourceMappingURL=component---src-pages-index-js-e262a43243c306ef402a.js.map
