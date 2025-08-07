@@ -8,7 +8,7 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  pathPrefix: `/`,
+  pathPrefix: `/shivam_portfolio`,
   siteMetadata: {
     title: `Shivam's Portfolio`,
     description: `This website belongs to Shivam Gupta. In this website you will find all about Shivam Gupta.`,
@@ -44,3 +44,4 @@ module.exports = {
 }
 
 require('./gatsby-node.js');
+
