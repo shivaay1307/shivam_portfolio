@@ -33,11 +33,11 @@ export const projects = [
     description:
       "Technology used wordpress HTML, CSS, Javascript. It is a cosmetics product based company and we help them to build their company's website in Atlantiser Mediatech Agency. We were two developer in the company made this possible and my roles is to develop complete backend in the wordpress.",
     imgs: [
-      "/zymo1.png",
-      "/zymo2.png", 
-      "/zymo3.png",
-      "/zymo4.png",
-      "/zymo5.png"
+      "zymo1.png",
+      "zymo2.png", 
+      "zymo3.png",
+      "zymo4.png",
+      "zymo5.png"
     ],
     link: "https://zymocosmetics.com",
   },
@@ -47,12 +47,12 @@ export const projects = [
     description:
       "Technology used wordpress, HTML, CSS, Javascript, Jquery and many others. This is the business brokerage company and we help them to build their company's website with all the Full Stack work. My role is to develop complete (Frontend and backend both).",
     imgs: [
-      "/spark.png",
-      "/spark1.png",
-      "/spark2.png",
-      "/spark3.png",
-      "/spark4.png",
-      "/spark5.png"
+      "spark.png",
+      "spark1.png",
+      "spark2.png",
+      "spark3.png",
+      "spark4.png",
+      "spark5.png"
     ],
   },
   {
@@ -61,10 +61,10 @@ export const projects = [
     description:
       "Technology used wordpress, HTML, CSS, Javascript. It is a Plastic Bottle and caps manufacturing company and we help them to build their company's website in Atlantiser Mediatech Agency. We were two developer in the company made this possible and my roles is to develop complete backend in the wordpress.",
     imgs: [
-      "/dhiren.png",
-      "/dhiren1.png",
-      "/dhiren2.png",
-      "/dhiren3.png"
+      "dhiren.png",
+      "dhiren1.png",
+      "dhiren2.png",
+      "dhiren3.png"
     ],
   },
   {
@@ -73,12 +73,12 @@ export const projects = [
     description:
       "Technology used React.js, Javascript, Zustand management library, Reactflow, HTML, CSS, Etherscan, Metamask and many other. It is a blockchain development payment services company and my role is develop next-gen frontend with best in UI / UX, so we I implement Reactflow technology for 3d visualization of data and added dynamic nested forms to perform the operations.",
     imgs: [
-      "/cas1.png",
-      "/cas2.png",
-      "/cas3.png", 
-      "/cas4.png",
-      "/cas5.png",
-      "/cas6.png"
+      "cas1.png",
+      "cas2.png",
+      "cas3.png", 
+      "cas4.png",
+      "cas5.png",
+      "cas6.png"
     ],
   },
   {
@@ -87,10 +87,10 @@ export const projects = [
     description:
       "Technology used HTML, CSS, Javascript, React.js and many others. It is a clothing retailer and clothing design implementation e-commerce based company and we help them to build their company's website in Atlantiser Mediatech Agency. My roles is to develop complete frontend most important design of clothes interface.",
     imgs: [
-      "/rush.png",
-      "/rush1.png",
-      "/rush2.png",
-      "/rush3.png"
+      "rush.png",
+      "rush1.png",
+      "rush2.png",
+      "rush3.png"
     ],
   },
   {
@@ -99,8 +99,8 @@ export const projects = [
     description:
       "Technology used HTML, CSS, Javascript, React.js, implementation of MERN stack. It is my personal learning project in which my company wants to test me at initial understanding of basic development skills. My Learning is to make complete Frontend and backend using MERN stack.",
     imgs: [
-      "/movie.png",
-      "/movie1.png"
+      "movie.png",
+      "movie1.png"
     ],
   },
   {
@@ -109,9 +109,9 @@ export const projects = [
     description:
       "Technology used HTML, CSS, Javascript. It is my personal learning project in which my company wants to test me at initial understanding of basic development skills. My task is to design and develop without any help.",
     imgs: [
-      "/wineschool.png",
-      "/wineschool1.png",
-      "/wineschool2.png"
+      "wineschool.png",
+      "wineschool1.png",
+      "wineschool2.png"
     ],
   },
   {
@@ -132,163 +132,163 @@ export const tech = [
   {
     title: "HTML5",
     name: "html",
-    imgPath: "/html.png",
+    imgPath: "html.png",
     rate: 9,
   },
   {
     title: "CSS3",
     name: "css",
-    imgPath: "/css.png",
+    imgPath: "css.png",
     rate: 9,
   },
   {
     title: "Javascript",
     name: "js",
-    imgPath: "/js.png",
+    imgPath: "js.png",
     rate: 8,
   },
   {
     title: "Typescript",
     name: "typescript",
-    imgPath: "/typescript.png",
+    imgPath: "typescript.png",
     rate: 7,
   },
   {
     title: "ReactJs",
-    name: "reactjs",
-    imgPath: "/react.png",
+    name: "react",
+    imgPath: "react.png",
     rate: 9,
   },
   {
     title: "Jquery",
     name: "jquery",
-    imgPath: "/jquery.png",
+    imgPath: "jquery.png",
     rate: 7,
   },
   {
     title: "Wordpress",
     name: "wordpress",
-    imgPath: "/wordpress.png",
+    imgPath: "wordpress.png",
     rate: 9,
   },
   {
     title: "Node.js",
     name: "node",
-    imgPath: "/node.png",
+    imgPath: "node.png",
     rate: 7,
   },
   {
     title: "Bootstrap",
     name: "bootstrap",
-    imgPath: "/bootstrap.png",
+    imgPath: "bootstrap.png",
     rate: 10,
   },
   {
     title: "GraphQl",
     name: "graphql",
-    imgPath: "/graphql.png",
+    imgPath: "graphql.png",
     rate: 8,
   },
   {
     title: "Gatsby",
     name: "gatsbyIcon",
-    imgPath: "/gatsby-icon.png",
+    imgPath: "gatsbyIcon.png",
     rate: 8,
   },
   {
     title: "Material UI",
     name: "material",
-    imgPath: "/material.png",
+    imgPath: "material.png",
     rate: 10,
   },
   {
     title: "Github",
     name: "git",
-    imgPath: "/git.png",
+    imgPath: "git.png",
     rate: 8,
   },
   {
     title: "TailwindCSS",
     name: "tailwind",
-    imgPath: "/tailwind.png",
+    imgPath: "tailwind.png",
     rate: 10,
   },
   {
     title: "Redux",
     name: "redux",
-    imgPath: "/redux.png",
+    imgPath: "redux.png",
     rate: 10,
   },
   {
     title: "Next.js",
     name: "next",
-    imgPath: "/next.png",
+    imgPath: "next.png",
     rate: 6,
   },
   {
     title: "ReactFlow",
     name: "reactflow",
-    imgPath: "/reactflow.svg",
+    imgPath: "reactflow.png",
     rate: 9,
   },
   {
     title: "Greensock Animation",
-    name: "gsap2",
-    imgPath: "/gsap.png",
+    name: "gsap",
+    imgPath: "gsap.png",
     rate: 7,
   },
   {
     title: "SwiperJS",
     name: "swiper",
-    imgPath: "/swiper.png",
+    imgPath: "swiper.png",
     rate: 10,
   },
   {
     title: "Sanity",
     name: "sanity",
-    imgPath: "/sanity.png",
+    imgPath: "sanity.png",
     rate: 6,
   },
   {
     title: "Video.js",
     name: "videojs",
-    imgPath: "/videojs.png",
+    imgPath: "videojs.png",
     rate: 9,
   },
   {
     title: "React Testing Library",
     name: "react_testing",
-    imgPath: "/react_testing.png",
+    imgPath: "react_testing.png",
     rate: 6,
   },
   {
     title: "Jest",
     name: "jest",
-    imgPath: "/jest.webp",
+    imgPath: "jest.webp",
     rate: 6,
   },
   {
     title: "Echarts",
     name: "echarts",
-    imgPath: "/echarts.png",
+    imgPath: "echarts.png",
     rate: 9,
   },
   {
     title: "Jotai",
     name: "jotai",
-    imgPath: "/jotai.png",
+    imgPath: "jotai.png",
     rate: 6,
   },
   {
     title: "React Tanstack",
     name: "tanstack",
-    imgPath: "/tanstack.png",
+    imgPath: "tanstack.png",
     rate: 6,
   },
   {
     title: "Webpack",
     name: "webpack",
-    imgPath: "/webpack.png",
+    imgPath: "webpack.png",
     rate: 8,
   },
 ]

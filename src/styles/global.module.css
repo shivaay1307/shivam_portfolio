@@ -12,6 +12,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -209,12 +210,12 @@ li {
   font-size: 0.7rem;
 }
 
-.flex_enter{
+.flex_enter {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  margin-top: -5vh;
+  margin-top: -8vh;
 }
 
 .snapContainer {
@@ -592,36 +593,36 @@ li {
 .skills_list::-webkit-scrollbar {
   display: none;
 }
-
-.skill_img {
-  display: block;
-  object-fit: contain;
-  height: auto;
-  width: 100%;
-  max-height: 50px;
-}
-
 .skill_img_container {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 50px;
   margin-bottom: 0.5rem;
 }
 
 .skill_img_container_inner {
-  background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  border: 1px solid rgba(108, 99, 255, 0.2);
-  border-radius: 12px;
+  width: 100px;
+  height: 100px;
   padding: 0.5rem;
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 12px;
+  border: 1px solid rgba(108, 99, 255, 0.2);
   backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
   transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.skill_img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .skill_img_container_inner:hover {
@@ -940,11 +941,12 @@ li {
 }
 
 .imageGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   max-height: 300px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .imageContainer {
@@ -1355,31 +1357,51 @@ li {
 
 @media screen and (max-width: 1200px) {
   .particle-network-animation canvas {
-  pointer-events: none;
-}
+    pointer-events: none;
+  }
 
-a:focus, button:focus, .projectButton:focus, .projectButtonOverlay:focus {
-  outline: none;
-  box-shadow: none;
-}
+  a:focus,
+  button:focus,
+  .projectButton:focus,
+  .projectButtonOverlay:focus {
+    outline: none;
+    box-shadow: none;
+  }
 
-a, button, .projectButton, .projectButtonOverlay, .banner, .banner_text, .banner_links, .links_container, .slide, .educationSection, .skills_section {
-  -webkit-tap-highlight-color: transparent;
-}
+  a,
+  button,
+  .projectButton,
+  .projectButtonOverlay,
+  .banner,
+  .banner_text,
+  .banner_links,
+  .links_container,
+  .slide,
+  .educationSection,
+  .skills_section {
+    -webkit-tap-highlight-color: transparent;
+  }
 
-body, .banner, .banner_text, .banner_links, .links_container, .slide, .educationSection, .skills_section {
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
+  body,
+  .banner,
+  .banner_text,
+  .banner_links,
+  .links_container,
+  .slide,
+  .educationSection,
+  .skills_section {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
 
-* {
-  -webkit-tap-highlight-color: transparent;
-}
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 
-::selection {
-  background: transparent;
-}
+  ::selection {
+    background: transparent;
+  }
 
   .circle {
     display: none;
@@ -1419,16 +1441,19 @@ body, .banner, .banner_text, .banner_links, .links_container, .slide, .education
     justify-content: flex-start;
   }
 
-.email {
-  width: 100%;
-  word-break: break-all;
-  overflow-wrap: break-word;
-  white-space: normal;
-}
+  .email {
+    width: 100%;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    white-space: normal;
+  justify-content: center;
+    align-items: center;
+  }
 
   .a {
     width: 100%;
     max-width: 120px;
+  justify-content: center;
   }
 
   .a:last-child {
@@ -1441,7 +1466,6 @@ body, .banner, .banner_text, .banner_links, .links_container, .slide, .education
 
   .pauseButton {
     position: fixed;
-    top: 50px;
     right: 0;
     left: 0;
   }
@@ -1469,9 +1493,9 @@ body, .banner, .banner_text, .banner_links, .links_container, .slide, .education
   }
 
   .slide h2,
-  .educationSection h2, 
+  .educationSection h2,
   .educationSection h3,
-  .skills_section h2, 
+  .skills_section h2,
   .popupHeader h2 {
     font-size: 1rem;
     margin: 0;
@@ -1515,68 +1539,69 @@ body, .banner, .banner_text, .banner_links, .links_container, .slide, .education
 
   .educationSection ul {
     overflow: auto;
-}
+  }
 
   .skills_list {
-  grid-template-columns: repeat(2, 1fr);
-  padding: 0;
-}
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0;
+  }
 
-.projectsGrid{
-  max-width: 360px;
-  gap: 0.5rem;
-}
+  .projectsGrid {
+    max-width: 360px;
+    gap: 0.5rem;
+  }
 
-.projectCard {
-  max-height: 500px;
-  max-width: 300px;
-}
+  .projectCard {
+    max-height: 500px;
+    max-width: 300px;
+  }
 
-.popupContent{
-  padding: 0.5rem;
-}
+  .popupContent {
+    padding: 0.5rem;
+  }
 
-.popupDescription, .popupLink .projectLink {
-  font-size: 0.6rem;
-  line-height: 1rem;
-  letter-spacing: 0.5px;
-  text-transform: capitalize;
-}
+  .popupDescription,
+  .popupLink .projectLink {
+    font-size: 0.6rem;
+    line-height: 1rem;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+  }
 
-.popupHeader{
-  margin: 0;
-  margin-bottom: 8px;
-}
+  .popupHeader {
+    margin: 0;
+    margin-bottom: 8px;
+  }
 
-.closeButton {
-  padding: 0.3rem;
-  min-width: 30px;
-  height: 30px;
-  font-size: x-large;
-}
+  .closeButton {
+    padding: 0.3rem;
+    min-width: 30px;
+    height: 30px;
+    font-size: x-large;
+  }
 
-.popupImages {
-  margin-top: 0.5rem;
-}
+  .popupImages {
+    margin-top: 0.5rem;
+  }
 
-.imageGrid {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.5rem;
-  max-height: 200px;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
+  .imageGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+    max-height: 200px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 
-.project_image_slider {
-  width: 16px;
-  height: 16px;
-  font-size: 0.5rem;
-  margin: 0;
-}
+  .project_image_slider {
+    width: 16px;
+    height: 16px;
+    font-size: 0.5rem;
+    margin: 0;
+  }
 
-.project_image_slider img{
-  width: 16px;
-  height: 16px;
-}
+  .project_image_slider img {
+    width: 16px;
+    height: 16px;
+  }
 
 }

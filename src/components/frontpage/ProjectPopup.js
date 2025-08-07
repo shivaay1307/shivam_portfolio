@@ -3,14 +3,29 @@ import { SplitText } from '@animations/SplitText';
 import * as styles from '../../styles/global.module.css';
 import left from '../../assets/images/left.svg';
 import right from '../../assets/images/right.svg';
-
+import { useStaticQuery, graphql } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const ANIMATION_DURATION = 2200;
 
 const ProjectPopup = ({ project, onClose }) => {
-  const images = project?.imgs || []; 
+  const images = project?.imgs || [];
   const [current, setCurrent] = useState(0);
   const [showLink, setShowLink] = useState(false);
+
+  const data = useStaticQuery(graphql`
+    query {
+      allFile {
+        nodes {
+          name
+          extension
+          childImageSharp {
+            gatsbyImageData(width: 900, placeholder: BLURRED, quality: 90)
+          }
+        }
+      }
+    }
+  `);
 
   useEffect(() => {
     setShowLink(false);
@@ -18,19 +33,31 @@ const ProjectPopup = ({ project, onClose }) => {
     return () => clearTimeout(timer);
   }, [project?.description]);
 
-  const goPrev = e => {
+  const goPrev = (e) => {
     e.stopPropagation();
-    setCurrent(prev => (prev === 0 ? images.length - 1 : prev - 1));
+    setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
-  const goNext = e => {
+  const goNext = (e) => {
     e.stopPropagation();
-    setCurrent(prev => (prev === images.length - 1 ? 0 : prev + 1));
+    setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
+
+  const getMatchedImage = (filename) => {
+    const safeFilename = filename?.toLowerCase().trim();
+    return data.allFile.nodes.find(
+      (node) =>
+        `${node.name.toLowerCase().trim()}.${node.extension.toLowerCase().trim()}` ===
+        safeFilename
+    );
+  };
+
+  const matchedImage = getMatchedImage(images[current]);
+  const gatsbyImage = getImage(matchedImage);
 
   return (
     <div className={styles.popupOverlay} onClick={onClose}>
-      <div className={styles.popupContent} onClick={e => e.stopPropagation()}>
+      <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.popupHeader}>
           <h2>
             <SplitText by="WORD" as="i" animate>
@@ -38,14 +65,16 @@ const ProjectPopup = ({ project, onClose }) => {
             </SplitText>
           </h2>
           <button className={styles.closeButton} onClick={onClose}>
-          ×
-        </button>
+            ×
+          </button>
         </div>
-          <div className={styles.popupDescription}>
-            <SplitText by="WORD" as="i" animate>
-              {project?.description}
-            </SplitText>
-          {project?.link && showLink &&  (
+
+        <div className={styles.popupDescription}>
+          <SplitText by="WORD" as="i" animate>
+            {project?.description}
+          </SplitText>
+
+          {project?.link && showLink && (
             <div className={styles.popupLink}>
               <a
                 href={project.link}
@@ -59,46 +88,49 @@ const ProjectPopup = ({ project, onClose }) => {
               </a>
             </div>
           )}
-            </div>
-          {images.length > 0 && (
-            <div className={styles.popupImages}>
-              <div
-                className={styles.imageGrid}
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  display: 'flex',
-                }}
+        </div>
+
+        {images.length > 0 && (
+          <div className={styles.popupImages}>
+            <div className={styles.imageGrid}>
+              <button
+                onClick={goPrev}
+                disabled={images.length <= 1}
+                className={styles.project_image_slider}
               >
-                <button
-                  onClick={goPrev}
-                  disabled={images.length <= 1}
-                  className={styles.project_image_slider}
-                  style={{ marginRight: '8px' }}
-                >
-                  <img src={left} alt="left" />
-                </button>
-                <div className={styles.imageContainer}>
-                  <img
-                    src={images[current]}
+                <img src={left} alt="left" />
+              </button>
+
+              <div className={styles.imageContainer}>
+                {gatsbyImage ? (
+                  <GatsbyImage
+                    image={gatsbyImage}
                     alt={`${project?.title} screenshot ${current + 1}`}
                     className={styles.popupImage}
                   />
-                </div>
-                <button
-                  onClick={goNext}
-                  disabled={images.length <= 1}
-                  className={styles.project_image_slider}
-                  style={{ marginLeft: '8px' }}
-                >
-                  <img src={right} alt="right" />
-                </button>
+                ) : (
+                  <img
+                    src={require(`../../assets/images/static/${images[current]}`)}
+                    alt={`${project?.title} screenshot ${current + 1}`}
+                    className={styles.popupImage}
+                  />
+                )}
               </div>
-              <div style={{ textAlign: 'center', marginTop: 8 }}>
-                {current + 1} / {images.length}
-              </div>
+
+              <button
+                onClick={goNext}
+                disabled={images.length <= 1}
+                className={styles.project_image_slider}
+              >
+                <img src={right} alt="right" />
+              </button>
             </div>
-          )}
+
+            <div style={{ textAlign: 'center', marginTop: 8 }}>
+              {current + 1} / {images.length}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

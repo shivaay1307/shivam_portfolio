@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { SplitText } from "@animations/SplitText";
 import * as styles from "../../styles/global.module.css";
 
@@ -8,16 +10,35 @@ const ProjectCard = ({ project, onRead }) => {
   const [linkPreview, setLinkPreview] = useState(null);
   const [isLoadingPreview, setIsLoadingPreview] = useState(false);
 
+  const data = useStaticQuery(graphql`
+    query {
+      allFile{
+        nodes {
+          name
+          extension
+          childImageSharp {
+            gatsbyImageData(width: 600, placeholder: BLURRED, quality: 80)
+          }
+        }
+      }
+    }
+  `);  
+
   useEffect(() => {
     if (!hasImages && hasLink && !linkPreview) {
       setIsLoadingPreview(true);
       const fetchLinkPreview = async () => {
         try {
-          const response = await fetch(`https://api.microlink.io?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url`);
+          const response = await fetch(
+            `https://api.microlink.io?url=${encodeURIComponent(
+              project.link
+            )}&screenshot=true&meta=false&embed=screenshot.url`
+          );
           if (response.status === 200 && response.url) {
             setLinkPreview(response.url);
           }
         } catch (error) {
+          console.error("Microlink preview failed:", error);
         } finally {
           setIsLoadingPreview(false);
         }
@@ -26,32 +47,83 @@ const ProjectCard = ({ project, onRead }) => {
     }
   }, [hasImages, hasLink, linkPreview, project]);
 
+  const renderProjectImage = () => {
+    const firstImgPath = project.imgs?.[0]?.toLowerCase().trim();
+    const matchedImage = data.allFile.nodes.find(
+      node =>
+        `${node.name.toLowerCase().trim()}.${node.extension.toLowerCase().trim()}` === firstImgPath
+    );    
+    const image = getImage(matchedImage);
+
+    if (image) {
+      return (
+        <GatsbyImage
+          image={image}
+          alt={project.title}
+          className={styles.projectImage}
+        />
+      );
+    }
+
+    try {
+      return (
+        <img
+          src={require(`../../assets/images/static/${firstImgPath}`)}
+          alt={project.title}
+          className={styles.projectImage}
+        />
+      );
+    } catch {
+      return null;
+    }
+  };
+
   return (
     <div className={styles.projectCard}>
       <div className={styles.projectImageContainer}>
         {hasImages ? (
           <div className={styles.projectImagePlaceholder}>
-            <img src={project.imgs[0]} alt={project.title} className={styles.projectImage} />
+            {renderProjectImage()}
           </div>
         ) : hasLink ? (
           <div className={styles.projectImagePlaceholder}>
             {isLoadingPreview ? (
-              <div style={{ width: '20px', height: '20px', border: '2px solid #6c63ff', borderTop: '2px solid transparent', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+              <div
+                style={{
+                  width: "20px",
+                  height: "20px",
+                  border: "2px solid #6c63ff",
+                  borderTop: "2px solid transparent",
+                  borderRadius: "50%",
+                  animation: "spin 1s linear infinite",
+                }}
+              />
             ) : (
-              linkPreview && <img src={linkPreview} alt={project.title} className={styles.projectImage} />
+              linkPreview && (
+                <img
+                  src={linkPreview}
+                  alt={project.title}
+                  className={styles.projectImage}
+                />
+              )
             )}
           </div>
         ) : (
-          <div className={styles.projectImagePlaceholder}>
-          </div>
+          <div className={styles.projectImagePlaceholder}></div>
         )}
-        <button className={styles.projectButtonOverlay} onClick={() => onRead(project)}>
+
+        <button
+          className={styles.projectButtonOverlay}
+          onClick={() => onRead(project)}
+        >
           Read More
         </button>
       </div>
+
       <div className={styles.projectContent}>
         <h3 className={styles.projectTitle}>{project.title}</h3>
         <p className={styles.projectDescription}>{project.description}</p>
+
         {project.link && (
           <a
             href={project.link}
