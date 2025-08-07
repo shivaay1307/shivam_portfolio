@@ -19,8 +19,6 @@
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@images/*": ["src/images/*"],
-      "@projects/*": ["src/images/projects/*"],
-      "@tech/*": ["src/images/tech/*"],
       "@assets/*": ["src/assets/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/animations/*"],
